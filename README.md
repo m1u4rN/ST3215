@@ -16,3 +16,9 @@ Pyserial, flask (остальное стандартные библиотеки 
 Для сборки таких же устновок:
 https://www.waveshare.com/wiki/2-Axis_Pan-Tilt_Camera_Module_Assembly_and_Configuration_Guide?utm_source=chatgpt.com
 Вкратце: Есть основной сервопривод, двигающий по горизонтали (серв1) и сервопривод на камере, двигающий по вертикали (серв2). После сборки: https://www.youtube.com/watch?v=SbexKaE8EFY, остается неподключенный кабель, выходящий из серв1. Не подключаем его и отправляем: {"T":501,"raw":1,"new":2} - можно по UART (Заменить в файле test.py cmd) или в control panel. Теперь подключаем серв1 к серв 2 <img width="951" height="516" alt="image" src="https://github.com/user-attachments/assets/8539136b-39d3-435b-ada6-453399e17809" /> и отправляем {"T":210,"cmd":0}, а после {"T":502,"id":1}. 
+
+О файлах:
+1) templates/index.html + web.py - сырой веб интерфейс для управления камерой и вывода изображения (http://192.168.111.26:5000/)
+2) sniff.py - читать логи с uart
+3) test.py - отправлять json команды на плату (можно брать с control panel)
+4) servo_uart.py - попытка использовать библиотеку st3215 (Может кто захочет разобраться)
